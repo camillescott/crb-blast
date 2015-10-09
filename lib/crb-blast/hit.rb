@@ -8,8 +8,8 @@ module CRB_Blast
 
     def initialize(list, qprot, tprot)
       raise(RuntimeError, "unexpected number of columns") if list.length < 14
-      @query      = list[0].split(/[\|\ ]/).first
-      @target     = list[1].split(/[\|\ ]/).first
+      @query      = list[0]
+      @target     = list[1]
       @id         = list[2]
       @alnlen     = list[3].to_i
       @mismatches = list[4].to_i
@@ -28,7 +28,7 @@ module CRB_Blast
 
     def to_s
       s = "#{@query}\t#{@target}\t#{@id}\t#{@alnlen}\t#{@evalue}\t#{@bitscore}\t"
-      s << "#{@qstart}..#{@qend}\t#{@tstart}..#{@tend}\t#{@qlen}\t#{@tlen}"
+      s << "#{@qstart}\t#{@qend}\t#{@tstart}\t#{@tend}\t#{@qlen}\t#{@tlen}"
       return s
     end
   end
